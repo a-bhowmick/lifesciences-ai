@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root { height: 100%; }
+  body { @apply bg-slate-50 text-slate-900; }
+}
+
+@layer components {
+  .card { @apply bg-white rounded-2xl shadow-card border border-slate-100; }
+  .muted { @apply text-slate-500; }
+  .badge { @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium; }
+  .pill { @apply inline-flex items-center rounded-full bg-slate-100 text-slate-700 px-3 py-1 text-xs; }
+  .btn { @apply inline-flex items-center justify-center rounded-xl px-3 py-2 text-sm font-medium border border-slate-200 hover:bg-slate-50; }
+  .btn-primary { @apply bg-sky-600 text-white border-sky-600 hover:bg-sky-700; }
+  .section { @apply card p-6; }
+  .section-title { @apply text-sm font-semibold tracking-wide uppercase text-slate-500; }
+}
+
+/* Subtle hero background */
+.gradient-bg {
+  background:
+    radial-gradient(1200px 600px at 20% -10%, rgba(14,165,233,0.10), transparent 40%),
+    radial-gradient(1000px 500px at 100% 0%, rgba(148,163,184,0.12), transparent 40%),
+    linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
+}
+
+/* Print stylesheet for PDF export */
+@media print {
+  @page { margin: 12mm; }
+  body { background: #fff; }
+  header, .no-print { display: none !important; }
+  .card { box-shadow: none !important; border-color: #e5e7eb !important; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; color: #64748b; font-size: 10px; }
+  .page-break-before { page-break-before: always; }
+  .page-break-after { page-break-after: always; }
+}
